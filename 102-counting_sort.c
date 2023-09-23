@@ -10,9 +10,10 @@
  */
 size_t _max(int *array, size_t size)
 {
-	size_t i = 0;
+	size_t i;
 	size_t max;
 
+	i = 0;
 	max = array[i];
 	while (i < size)
 	{
@@ -42,6 +43,12 @@ void counting_sort(int *array, size_t size)
 		count_arr = malloc(sizeof(int) * (max + 1));
 		if (!count_arr)
 			return;
+		out_arr = malloc(sizeof(int) * size);
+		if (!out_arr)
+		{
+			free(count_arr);
+			return;
+		}
 		i = 0;
 		while (i <= max)
 			count_arr[i++] = 0;
@@ -55,9 +62,6 @@ void counting_sort(int *array, size_t size)
 			i++;
 		}
 		print_array(count_arr, max + 1);
-		out_arr = malloc(sizeof(int) * size);
-		if (!out_arr)
-			return;
 		i = 0;
 		while (i < size)
 		{
