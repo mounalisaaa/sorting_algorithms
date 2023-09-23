@@ -10,18 +10,18 @@
  */
 void shell_sort(int *array, size_t size)
 {
-	size_t gap;
-	size_t i;
-	size_t j;
+	int gap;
+	int i;
+	int j;
 	int temp;
 
 	gap = 1;
-	while (gap < size / 3)
+	while (gap < (int)size / 3)
 		gap = gap * 3 + 1;
 	while (gap > 0)
 	{
 		i = gap;
-		while (i < size)
+		while (i < (int)size)
 		{
 			temp = array[i];
 			j = i;
