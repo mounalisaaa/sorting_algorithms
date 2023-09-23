@@ -13,8 +13,8 @@ int _max(int *array, size_t size)
 	size_t i;
 	int  max;
 
-	i = 0;
-	max = array[i];
+	max = array[0];
+	i = 1;
 	while (i < size)
 	{
 		if (array[i] > max)
@@ -34,7 +34,7 @@ int _max(int *array, size_t size)
  */
 void counting_sort(int *array, size_t size)
 {
-		size_t i;
+		int i;
 		int *count_arr, *out_arr, max;
 
 		if (!array || size < 2)
@@ -50,11 +50,14 @@ void counting_sort(int *array, size_t size)
 			return;
 		}
 		i = 0;
-		while ((int)i <= max)
+		while (i <= max)
 			count_arr[i++] = 0;
 		i = 0;
-		while (i < size)
-			count_arr[array[i++]]++;
+		while (i < (int)size)
+		{
+			count_arr[array[i]]++;
+			i++;
+		}
 		i = 1;
 		while ((int)i <= max)
 		{
@@ -63,13 +66,14 @@ void counting_sort(int *array, size_t size)
 		}
 		print_array(count_arr, max + 1);
 		i = 0;
-		while (i < size)
+		while (i < (int)size)
 		{
 			out_arr[count_arr[array[i] - 1]] = array[i];
-			count_arr[array[i++]]--;
+			count_arr[array[i]]--;
+			i++;
 		}
 		i = 0;
-		while (i < size)
+		while (i < (int)size)
 		{
 			array[i] = out_arr[i];
 			i++;
