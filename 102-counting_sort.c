@@ -49,35 +49,20 @@ void counting_sort(int *array, size_t size)
 			free(count_arr);
 			return;
 		}
-		i = 0;
-		while (i <= max)
-			count_arr[i++] = 0;
-		i = 0;
-		while (i < (int)size)
-		{
+		for (i = 0; i <= max; i++)
+			count_arr[i] = 0;
+		for (i = 0; i < (int)size; i++)
 			count_arr[array[i]]++;
-			i++;
-		}
-		i = 1;
-		while ((int)i <= max)
-		{
+		for (i = 1; (int)i <= max; i++)
 			count_arr[i] += count_arr[i - 1];
-			i++;
-		}
 		print_array(count_arr, max + 1);
-		i = 0;
-		while (i < (int)size)
+		for (i = 0; i < (int)size; i++)
 		{
-			out_arr[count_arr[array[i] - 1]] = array[i];
+			out_arr[count_arr[array[i]] - 1] = array[i];
 			count_arr[array[i]]--;
-			i++;
 		}
-		i = 0;
-		while (i < (int)size)
-		{
+		for (i = 0; i < (int)size; i++)
 			array[i] = out_arr[i];
-			i++;
-		}
 		free(count_arr);
 		free(out_arr);
 }
