@@ -54,7 +54,10 @@ void counting_sort(int *array, size_t size)
 			count_arr[i++] = 0;
 		i = 0;
 		while (i < size)
-			count_arr[array[i++]]++;
+		{
+			count_arr[array[i]] += 1;
+			i++;
+		}
 		i = 1;
 		while (i <= max)
 		{
@@ -66,7 +69,8 @@ void counting_sort(int *array, size_t size)
 		while (i < size)
 		{
 			out_arr[count_arr[array[i] - 1]] = array[i];
-			count_arr[array[i++]]--;
+			count_arr[array[i]] -= 1;
+			i++;
 		}
 		i = 0;
 		while (i < size)
