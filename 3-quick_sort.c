@@ -40,9 +40,11 @@ int partition(int *arr, int l, int h, size_t size)
 		if (arr[j] <= pivot)
 		{
 			i++;
-			swap(&arr[i], &arr[j]);
-			printf("swap (i=%d j=%d)\n", i, j);
-			print_array(arr, size);
+			if (i < j)
+			{
+				swap(&arr[i], &arr[j]);
+				print_array(arr, size);
+			}
 		}
 		j++;
 	}
