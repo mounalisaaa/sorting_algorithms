@@ -55,14 +55,14 @@ void cocktail_sort_list(listint_t **list)
 	size_t i, j, len, swapped;
 	listint_t *curr;
 	
-	i = 0;
 	if (!list || !(*list) || !(*list)->next)
 		return;
 	len = list_len(*list);
 	curr = *list;
+	i = 0;
 	while (i < len)
 	{
-		j = 0;
+		j = i;
 		swapped = 0;
 		while (j < len - i - 1)
 		{
