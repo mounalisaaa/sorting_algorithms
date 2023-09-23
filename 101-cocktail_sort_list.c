@@ -1,4 +1,6 @@
 #include "sort.h"
+#include <stdio.h>
+#include <stdlib.h>
 
 /**
  * list_len - Computes the number of elements in a linked list.
@@ -62,7 +64,7 @@ void cocktail_sort_list(listint_t **list)
 	i = 0;
 	while (i < len)
 	{
-		j = i;
+		j = 0;
 		swapped = 0;
 		while (j < len - i - 1)
 		{
