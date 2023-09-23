@@ -3,26 +3,6 @@
 #include <stdlib.h>
 
 /**
- * list_len - Computes the number of elements in a linked list.
- *
- * @list: Pointer to the head of the linked list.
- *
- * Return: The number of elements in the linked list.
- */
-size_t list_len(listint_t *list)
-{
-	size_t i;
-
-	i = 0;
-	while (list)
-	{
-		i++;
-		list = list->next;
-	}
-	return (i);
-}
-
-/**
  * swap - Swaps two nodes in a doubly linked list.
  *
  * @a: Pointer to the first node.
@@ -54,19 +34,16 @@ void swap(listint_t *a, listint_t *b, listint_t **list)
  */
 void cocktail_sort_list(listint_t **list)
 {
-	size_t i, len, swapped;
+	size_t swapped;
 	listint_t *curr;
-	
+
 	if (!list || !(*list) || !(*list)->next)
 		return;
-	len = list_len(*list);
 	curr = *list;
-	i = 0;
-	while (i < len)
+	swapped = 1;
+	while (swapped)
 	{
-		/*j = 0;*/
 		swapped = 0;
-		/*while (j < len - i - 1)*/
 		while (curr->next)
 		{
 			if (curr->n > curr->next->n)
@@ -77,12 +54,10 @@ void cocktail_sort_list(listint_t **list)
 			}
 			else
 				curr = curr->next;
-			/*j++;*/
 		}
 		if (!swapped)
 			break;
 		swapped = 0;
-		/*while (j > i)*/
 		while (curr->prev)
 		{
 			if (curr->n < curr->prev->n)
@@ -93,10 +68,6 @@ void cocktail_sort_list(listint_t **list)
 			}
 			else
 				curr = curr->prev;
-			/*j--;*/
 		}
-		if (!swapped)
-		break;
-		i++;
 	}
 }
