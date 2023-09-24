@@ -1,0 +1,54 @@
+#include "sort.h"
+
+void merge(int *arr, int l, int m, int r, int *sorted)
+{
+	int i;
+	int j;
+	int k;
+	
+	i = l;
+	j = m + 1;
+	k = l;
+	while (i <= m && j <= r)
+	{
+		if (arr[i] < arr[j])
+			sorted[k++]  = arr[i++];
+		else
+			sorted[k++] = arr[j++];
+	}
+
+	while (j <= r)
+		sorted[k++] = arr[j++];
+	while (i <= m)
+		sorted[k++] = arr[i++];
+	while (l <= r)
+	{
+		arr[l] = sorted[l];
+		l++;
+	}
+}
+
+void merge_split(int *arr, int l, int h, int *sorted)
+{
+	int m;
+	if (l < h)
+	{
+		m = l + (h - l) / 2;
+		merge_split(arr, l, m, sorted);
+		merge_split(arr, m + 1, h, sorted);
+		merge(arr, l, m, h, sorted); 
+	}
+}
+
+int main(void)
+{
+	int arr[] = {19, 48, 99, 71, 13, 52, 96, 73, 86, 7};
+	size_t n = sizeof(arr) / sizeof(arr[0]);
+	int *sorted;
+
+	sorted = malloc(sizeof(int) * n);
+	merge_split(arr, 0, n - 1, sorted);
+	free(sorted);
+	print_array(arr, n);
+	return (0);
+}
