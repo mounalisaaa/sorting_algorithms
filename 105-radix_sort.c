@@ -75,9 +75,9 @@ void radix_sort(int *array, size_t size)
 	int *sorted;
 	size_t i;
 	int max;
-	
+
 	if (!array || size < 2)
-		return ;
+		return;
 	sorted = malloc(sizeof(int) * size);
 	if (!sorted)
 		return;
