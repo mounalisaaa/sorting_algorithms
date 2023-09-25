@@ -32,7 +32,7 @@ int hoare(int *arr, int low, int high, size_t size)
 	pivot = arr[high];
 	i = low - 1;
 	j = high + 1;
-	while (1)
+	while (i <= j)
 	{
 		do {
 			i++;
@@ -40,11 +40,13 @@ int hoare(int *arr, int low, int high, size_t size)
 		do {
 			j--;
 		} while (arr[j] > pivot);
-		if (i > j)
-			return (j);
-		swap(&arr[i], &arr[j]);
-		print_array(arr, size);
+		if (i < j)
+		{
+			swap(&arr[i], &arr[j]);
+			print_array(arr, size);
+		}
 	}
+	return (j);
 }
 
 /**
