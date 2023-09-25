@@ -15,6 +15,8 @@ int get_num(const char *value)
 		i++;
 	if (i == 1)
 		return (value[0] - '0');
+	else if (value[0] == '1')
+		return (10);
 	else if (value[0] == 'A')
 		return (1);
 	else if (value[0] == 'J')
